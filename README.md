@@ -1,6 +1,7 @@
 # 岛屿个人博客（React + Vite + Markdown）
 
-一个动物森友会 / Animal Crossing 风格的个人静态博客模板，包含首页、文章页、下载页和关于页。首页还包含实时岛屿时间、按月份判断春夏秋冬、按小时判断早中晚、捡贝壳和岛民灵感等互动。
+一个动物森友会 / Animal Crossing 风格的个人静态博客模板，包含首页、文章页、下载页和关于页。首页还包含实时岛屿时间、季节提示、捡贝壳和岛民灵感等互动。
+一个动物森友会 / Animal Crossing 风格的个人静态博客模板，包含首页、文章页、下载页和关于页。
 
 ## 项目结构
 
@@ -22,6 +23,11 @@
 │   ├── content.js        # Markdown 读取与解析
 │   ├── main.jsx          # React 入口
 │   └── styles.css        # 岛屿风格样式、动态倾斜、光照、光标
+│   ├── App.jsx           # 页面路由与主要 UI
+│   ├── content.js        # Markdown 读取与解析
+│   ├── main.jsx          # React 入口
+│   └── styles.css        # 岛屿风格样式、动态倾斜、光照、光标
+│   └── styles.css        # 岛屿风格样式、光照、hover、光标
 ├── index.html
 ├── package.json
 └── vite.config.js        # GitHub Pages base 配置
@@ -101,18 +107,3 @@ npm run build
 ```
 
 构建产物会输出到 `dist/`。
-
-## 常见报错处理
-
-如果你之前下载过旧版本，又直接把新文件覆盖进去，可能会出现 `downloads has already been declared` 或 `Unexpected const`。这通常是旧版 `src/App.jsx` 没有被完整替换，残留了重复 import 或旧的首页代码。
-
-处理方式：
-
-1. 确认 `src/App.jsx` 顶部只有一行 `content.js` 导入：
-
-```js
-import { downloads, getPostBySlug } from './content.js';
-```
-
-2. 确认首页逻辑在 `src/pages/HomePage.jsx`，不要再把 `HomePage` 代码粘回 `src/App.jsx`。
-3. 最稳妥的做法是删除旧项目目录，重新解压 / clone 最新代码后再运行 `npm install && npm run dev`。

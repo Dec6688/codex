@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Typewriter } from '../components/Typewriter.jsx';
 import { posts } from '../content.js';
-import { getDayPart, getSeason, islandTips } from '../lib/island.js';
+import { getSeason, islandTips } from '../lib/island.js';
 
 const pathFor = (path) => `#${path}`;
 
@@ -10,7 +10,6 @@ export function HomePage() {
   const [shells, setShells] = useState(0);
   const [tipIndex, setTipIndex] = useState(0);
   const season = getSeason(now.getMonth());
-  const dayPart = getDayPart(now.getHours());
 
   useEffect(() => {
     const timer = window.setInterval(() => setNow(new Date()), 1000);
@@ -35,7 +34,6 @@ export function HomePage() {
           <div>
             <p className="eyebrow">Island Clock</p>
             <h2>{formattedTime}</h2>
-            <p>{dayPart.icon} {dayPart.name} · {dayPart.greeting}。</p>
             <p>现在是{season.name}：{season.mood}。</p>
           </div>
         </article>
