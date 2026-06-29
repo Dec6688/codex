@@ -17,6 +17,12 @@
 │   ├── content/
 │   │   ├── posts/        # 文章 Markdown
 │   │   └── downloads/    # 下载页 Markdown
+│   ├── App.jsx           # 页面路由、音乐、动态倾斜绑定
+│   ├── pages/HomePage.jsx # 首页时间、季节和互动卡片
+│   ├── lib/island.js     # 季节和岛民提示数据
+│   ├── content.js        # Markdown 读取与解析
+│   ├── main.jsx          # React 入口
+│   └── styles.css        # 岛屿风格样式、动态倾斜、光照、光标
 │   ├── App.jsx           # 页面路由与主要 UI
 │   ├── content.js        # Markdown 读取与解析
 │   ├── main.jsx          # React 入口

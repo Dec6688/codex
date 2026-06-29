@@ -1,4 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { downloads, getPostBySlug } from './content.js';
+import cursorUrl from './assets/cursor/select-cursor.svg';
+import { HomePage } from './pages/HomePage.jsx';
 import { Typewriter } from './components/Typewriter.jsx';
 import { downloads, getPostBySlug, posts } from './content.js';
 import cursorUrl from './assets/cursor/select-cursor.svg';
