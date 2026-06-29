@@ -10,7 +10,6 @@ export const profile = {
   role: '慢生活记录员 / Frontend Explorer',
   avatar: '🧑‍🌾',
   bio: '这里收集文章、灵感、资源和一点点海风。你可以把这里改成自己的头像、昵称、简介和社交链接。',
-  notice: '今日公告：欢迎来到小岛！记得更新个人头像、简介和 GitHub 链接，也可以把新文章放进 src/content/posts。',
   links: [
     { label: 'GitHub', href: 'https://github.com/' },
     { label: 'Email', href: 'mailto:hello@example.com' },

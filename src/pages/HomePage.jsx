@@ -11,7 +11,6 @@ export function HomePage() {
   const [now, setNow] = useState(() => new Date());
   const [shells, setShells] = useState(0);
   const [tipIndex, setTipIndex] = useState(0);
-  const [query, setQuery] = useState('');
   const season = getSeason(now.getMonth());
   const dayPart = getDayPart(now.getHours());
 
@@ -22,15 +21,6 @@ export function HomePage() {
 
   const formattedTime = now.toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
   const shellIcons = Array.from({ length: Math.min(shells, 12) }, (_, index) => <span key={index}>🐚</span>);
-  const normalizedQuery = query.trim().toLowerCase();
-  const filteredPosts = posts.filter((post) => {
-    if (!normalizedQuery) return true;
-    return [post.title, post.description, post.author, post.date, post.readingTime, ...(post.tags || [])]
-      .filter(Boolean)
-      .join(' ')
-      .toLowerCase()
-      .includes(normalizedQuery);
-  });
 
   return (
     <>
@@ -69,14 +59,6 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="notice-board card tilt-card">
-        <span>📌</span>
-        <div>
-          <p className="eyebrow">今日公告</p>
-          <p>{profile.notice}</p>
-        </div>
-      </section>
-
       <section className="island-dashboard">
         <button className="info-card card tilt-card interaction-card shell-card" type="button" onClick={() => setShells((count) => count + 1)}>
           <span className="info-icon">🏖️</span>
@@ -101,21 +83,12 @@ export function HomePage() {
       </section>
 
       <section className="grid-section">
-        <div className="section-title section-title--search">
+        <div className="section-title">
           <span>🌱</span>
-          <h2>文章索引</h2>
-          <label className="post-search">
-            <span>🔎</span>
-            <input
-              value={query}
-              onChange={(event) => setQuery(event.target.value)}
-              placeholder="搜索标题 / 作者 / 日期 / 标签 / 关键词"
-            />
-          </label>
+          <h2>最新文章</h2>
         </div>
-        <p className="search-count">找到 {filteredPosts.length} 篇文章</p>
         <div className="post-grid">
-          {filteredPosts.map((post) => (
+          {posts.map((post) => (
             <a className="post-card card tilt-card" key={post.slug} href={pathFor(`/posts/${post.slug}`)}>
               <span className="post-cover">{post.cover || '🍃'}</span>
               <div className="meta-row">
@@ -128,7 +101,6 @@ export function HomePage() {
               <div className="tags">{post.tags?.map((tag) => <span key={tag}>#{tag}</span>)}</div>
             </a>
           ))}
-          {filteredPosts.length === 0 && <p className="empty-result card">没有找到文章，换个关键词试试看。</p>}
         </div>
       </section>
     </>
