@@ -110,6 +110,7 @@ function Layout() {
 
   return (
     <div className="island-shell" style={{ '--animal-cursor': `url(${cursorUrl}) 12 8, auto` }}>
+    <div className="island-shell">
       <div className="sun-glow" />
       <audio ref={audioRef} src={MUSIC_PLAYLIST[0]} loop preload="auto" />
 

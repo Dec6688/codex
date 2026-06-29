@@ -6,6 +6,7 @@
   --water: #9be7d8;
   --text: #51422f;
   cursor: var(--animal-cursor, auto);
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext x='2' y='25' font-size='24'%3E👉%3C/text%3E%3C/svg%3E") 4 4, pointer;
 }
 
 * { box-sizing: border-box; }
@@ -21,6 +22,7 @@ body {
 }
 a { color: inherit; text-decoration: none; }
 button, a { cursor: var(--animal-cursor, pointer); }
+button, a { cursor: inherit; }
 
 .island-shell { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding: 24px 0 80px; position: relative; }
 .sun-glow { position: fixed; inset: 0; pointer-events: none; background: radial-gradient(circle at 72% 12%, rgba(255,255,255,.55), transparent 18rem); mix-blend-mode: soft-light; }
@@ -35,6 +37,8 @@ button, a { cursor: var(--animal-cursor, pointer); }
 .tilt-card::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; background: radial-gradient(circle at var(--shine-x) var(--shine-y), rgba(255,255,255,.55), transparent 34%); transition: opacity .2s ease; }
 .tilt-card:hover { transform: perspective(900px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y)) translateY(-7px) scale(1.012); box-shadow: 0 24px 0 rgba(92,64,35,.08), 0 30px 54px rgba(76,120,80,.24); }
 .tilt-card:hover::after { opacity: 1; }
+.tilt-card { transition: transform .22s ease, box-shadow .22s ease; transform-style: preserve-3d; }
+.tilt-card:hover { transform: perspective(900px) rotateX(3deg) rotateY(-5deg) translateY(-6px); box-shadow: 0 24px 0 rgba(92,64,35,.08), 0 30px 54px rgba(76,120,80,.24); }
 
 .site-header { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 16px 20px; margin-bottom: 32px; }
 .brand { display: flex; align-items: center; gap: 10px; font-weight: 900; font-size: 1.3rem; }
